@@ -1,0 +1,41 @@
+- inicialmente fez-se as seguintes instalações:
+	I. eclipse;
+	II. xampp;
+	III. jdk 11;
+	IV. conectores mariadb e mysql.
+	
+- para que o conector seja utilizado no projeto basta:
+	I. criar uma pasta (chamada api) e inserir o conector dentro;
+	II. fazer o build da biblioteca em > botão direito no projeto > build path > configure build path
+	> libraries > classpath > add jar;
+	III. para "chamar" este conector para dentro do script, deve-se criar uma string recebendo o caminho 
+	onde está o conector.
+	ex.: String driver = "org.mariadb.jdbc.Driver";
+
+- toda vez que quisermos fazer conexão com o BD, deve-se seguir:
+	I.criar uma variável url com o caminho do servidor, contendo drive:bancoDados:local:porta
+	ex.: String url = "jdbc:mysql://localhost:3306/" 
+	e criar variaveis para login (user e password)
+	por padrão o user vem como root e o password vazio ("");
+	II. estabelecer conexão usando:
+	Connection conn = DriverManager.getConnection(url, user, password);
+	III. preparar conexão:
+	String sql = "create database if not exists BDaula";
+	PreparedStatement ps = conn.prepareStatement(sql);
+	IV. executar o comando no bd:
+	ps.execute();
+	V. finalizar conexão com o bd:
+	conn.close();
+	
+- após a preparação acima, para acrescentar outros comandos sql basta atribuir um novo comando
+à variavel "sql", reatribuir o sql ao ps e por ultimo mandar executar com execute();
+
+- o comando executeUpdate() retorna um int e pode ser usado para delete, insert ou update.
+portanto, quando se quiser saber quantos registros foram acrescentados, por exemplo, basta usar este comando;
+
+- instanciando PreparedStatement é possível setar informações em locais representados por interrogação (?).
+ex.: String teste = "INSERT INTO alunos(nome, idade) VALUES(?,?)"
+	 teste.setInt(1,22);
+	 testeString(2, "Luana");
+	
+	
