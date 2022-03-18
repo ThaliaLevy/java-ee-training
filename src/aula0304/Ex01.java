@@ -19,30 +19,20 @@ public class Ex01 {
 		Connection conn = DriverManager.getConnection(url, user, password);
 		PreparedStatement ps;
 
-		sql = "create database if not exists BDaula";
+		sql = "create database if not exists BDTeste";
 		ps = conn.prepareStatement(sql);
 		ps.execute();
 
-		sql = "use BDaula";
+		sql = "use BDTeste";
 		ps = conn.prepareStatement(sql);
 		ps.execute();
 
-		sql = "create table if not exists Alunos(id int, nome varchar(30), telefone varchar(11), email varchar(30))";
+		sql = "insert into Alunos(id, nome) values(?, ?)";
 		ps = conn.prepareStatement(sql);
+		ps.setInt(1, 10);
+		ps.setString(2, "Testando ?");
 		ps.execute();
-
-		sql = "create table if not exists Professores(id int, nome varchar(30), salario double, cpf varchar(11))";
-		ps = conn.prepareStatement(sql);
-		ps.execute();
-
-		sql = "insert into Alunos(id, nome, telefone, email) values(0, 'Thalia', 21999999, 'thalia@hotmail'), (1, 'Luana', 21999999, 'luana@hotmail'),(2, 'Diego', 21999999, 'diego@hotmail')";
-		ps = conn.prepareStatement(sql);
-		ps.execute();
-
-		/*
-		 * sql = "drop table alunos"; ps = conn.prepareStatement(sql); ps.execute();
-		 */
-
+		
 		conn.close();
 		System.out.println("Fim");
 	}

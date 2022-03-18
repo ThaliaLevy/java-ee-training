@@ -38,4 +38,9 @@ ex.: String teste = "INSERT INTO alunos(nome, idade) VALUES(?,?)"
 	 teste.setInt(1,22);
 	 testeString(2, "Luana");
 	
-	
+- dá para guardar resultado de select em um array utilizando a instancia 
+ResultSet nomeArray = nomeVariavelPreparedStatment.executeQuery();
+
+- nomeArray.next() faz a leitura do indice 0 ao ultimo indice de um array;
+obs.: para pegar o valor de um indice basta usar nomeArray.getInt/getString(posição ou nome da coluna), 
+por exemplo
