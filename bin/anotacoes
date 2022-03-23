@@ -44,3 +44,30 @@ ResultSet nomeArray = nomeVariavelPreparedStatment.executeQuery();
 - nomeArray.next() faz a leitura do indice 0 ao ultimo indice de um array;
 obs.: para pegar o valor de um indice basta usar nomeArray.getInt/getString(posição ou nome da coluna), 
 por exemplo
+
+
+- PADRAO DAO:
+duas classes são criadas: 1 classe para metodos e 1 para as interações com BD.
+por ex.:  classe para metodos > Produtos
+		  classe DAO          > ProdutosDAO
+		  
+- "static" = classe que não pode ser instanciada;
+
+- "super()" dentro do construtor deve ser usado quando houver relação de herança:
+se quiser usar os atributos de classe-pai;
+
+- para usar objeto como parâmetro, basta:
+	da main: 
+	i. instanciar a classe para onde quer enviar o objeto;
+	ii. chamar a função passando o parâmetro (this);
+	da outra classe:
+	i. ter uma função correspondente à que foi chamada;
+	ii. a função ter o parâmetro (Classe apelidoClasse) > ex.: cadastrar(Produto p);
+	iii. para pegar os atributos, basta utilizar getNomeAtributo();
+	
+- método para verificar se a conexão do sql está funcionando:
+	DriverManager.getConnection(url, user, password);
+	se algo der errado o método retorna null;
+	
+
+	

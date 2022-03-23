@@ -54,7 +54,10 @@ public class Ex03 {
 				case "1":{
 					System.out.println("Digite o novo número: ");
 					int numeroNovo = ler.nextInt();
+					// sem utilizar interrogação
 					//sql = "UPDATE alunos SET telefone = '"+numeroNovo+"' WHERE nome = '"+nome+"';";
+					
+					// com interrogação
 					sql = "UPDATE alunos SET telefone = ? WHERE nome = ?;";
 					ps = conn.prepareStatement(sql);
 					ps.setInt(1, numeroNovo);
