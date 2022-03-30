@@ -37,7 +37,12 @@ public class Produto {
 		valor = ler.nextDouble();
 		
 		ProdutoDAO pDAO = new ProdutoDAO();
-		pDAO.cadastrarEx01(this);
+		
+		if(pDAO.cadastrarEx01(this) == true) {
+			System.out.println(pDAO.mensagem);
+		}else {
+			System.out.println("Erro:" + pDAO.mensagem);
+		}
 
 		ler.close();
 	}

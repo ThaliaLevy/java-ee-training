@@ -4,8 +4,10 @@ import java.sql.SQLException;
 
 public class ProdutoDAO {
 
+	public String mensagem;
+	
 	// argumento da função é o objeto da classe Produto
-	public void cadastrarEx01(Produto p) {
+	public boolean cadastrarEx01(Produto p) {
 		try {
 			Conexao c = new Conexao();
 
@@ -31,11 +33,17 @@ public class ProdutoDAO {
 
 			c.conn.close();
 
-			System.out.println("Fim");
+			mensagem = "Cadastro de produto realizado com sucesso!";
+			return true;
+			
+			//o ideal é utilizar a forma acima, de salvar 1 msg em variavel e,
+			//após retorno de booleano, a mensagem ser exibida em outra classe
+			//NENHUMA msg ou interação com o usuario deve ser feita pela classe DAO
+			//System.out.println("Cadastro de produto realizado com sucesso!");
 
 		} catch (SQLException e) {
-			System.out.println("Erro: " + e);
-			e.printStackTrace();
+			mensagem = " " + e;
+			return false;
 		}
 	}
 

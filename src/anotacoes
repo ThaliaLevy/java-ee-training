@@ -69,5 +69,14 @@ se quiser usar os atributos de classe-pai;
 	DriverManager.getConnection(url, user, password);
 	se algo der errado o método retorna null;
 	
+- instâncias devem ser feitas dentro da função public void main (quando for o caso de estar nesta classe);
 
+- sempre usar try-catch;
+
+- nunca deve haver interação com o usuário ou mensagem de console na classe DAO;
+
+- 
+
+- abrir e fechar as conexões dentro das funções onde serão utilizadas;
+	num switch-case, por exe., dentro dos cases;
 	

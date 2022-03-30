@@ -22,10 +22,8 @@ public class Conexao {
 			password = "";
 
 			conn = DriverManager.getConnection(url, user, password);
-			
-
 		} catch (Exception e) {
-
+			System.out.println("Erro: " + e);
 		}
 	}
 }
