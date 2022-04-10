@@ -3,8 +3,6 @@ package exercicios;
 public class conexaoBD {
 
 	public static void main(String[] args) {
-		// criar cadastro de carros e os mÈtodos para inserÁ„o/exclus„o, etc
-
+		// criar cadastro de carros e os m√©todos para inser√ß√£o/exclus√£o, etc
 	}
-
 }
