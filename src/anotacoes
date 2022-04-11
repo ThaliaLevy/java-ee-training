@@ -4,6 +4,9 @@
 	III. jdk 11;
 	IV. conectores mariadb e mysql.
 	
+- caso ocorra um erro ocasionado pelo conflito de versões do java, basta seguir a partir
+	do tópico 4. > https://www.baeldung.com/java-lang-unsupportedclassversion
+	
 - para que o conector seja utilizado no projeto basta:
 	I. criar uma pasta (chamada api) e inserir o conector dentro;
 	II. fazer o build da biblioteca em > botão direito no projeto > build path > configure build path
