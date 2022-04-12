@@ -1,94 +1,94 @@
-- inicialmente fez-se as seguintes instalações:
+- inicialmente fez-se as seguintes instalaï¿½ï¿½es:
 	I. eclipse;
 	II. xampp;
 	III. jdk 11;
 	IV. conectores mariadb e mysql.
 	
-- caso ocorra um erro ocasionado pelo conflito de versões do java, basta seguir a partir
-	do tópico 4. > https://www.baeldung.com/java-lang-unsupportedclassversion
+- caso ocorra um erro ocasionado pelo conflito de versï¿½es do java, basta seguir a partir
+	do tï¿½pico 4. > https://www.baeldung.com/java-lang-unsupportedclassversion
 	
 - para que o conector seja utilizado no projeto basta:
 	I. criar uma pasta (chamada api) e inserir o conector dentro;
-	II. fazer o build da biblioteca em > botão direito no projeto > build path > configure build path
+	II. fazer o build da biblioteca em > botï¿½o direito no projeto > build path > configure build path
 	> libraries > classpath > add jar;
 	III. para "chamar" este conector para dentro do script, deve-se criar uma string recebendo o caminho 
-	onde está o conector.
+	onde estï¿½ o conector.
 	ex.: String driver = "org.mariadb.jdbc.Driver";
 
-- toda vez que quisermos fazer conexão com o BD, deve-se seguir:
-	I.criar uma variável url com o caminho do servidor, contendo drive:bancoDados:local:porta
+- toda vez que quisermos fazer conexï¿½o com o BD, deve-se seguir:
+	I.criar uma variï¿½vel url com o caminho do servidor, contendo drive:bancoDados:local:porta
 	ex.: String url = "jdbc:mysql://localhost:3306/" 
 	e criar variaveis para login (user e password)
-	por padrão o user vem como root e o password vazio ("");
-	II. estabelecer conexão usando:
+	por padrï¿½o o user vem como root e o password vazio ("");
+	II. estabelecer conexï¿½o usando:
 	Connection conn = DriverManager.getConnection(url, user, password);
-	III. preparar conexão:
+	III. preparar conexï¿½o:
 	String sql = "create database if not exists BDaula";
 	PreparedStatement ps = conn.prepareStatement(sql);
 	IV. executar o comando no bd:
 	ps.execute();
-	V. finalizar conexão com o bd:
+	V. finalizar conexï¿½o com o bd:
 	conn.close();
 	
-- após a preparação acima, para acrescentar outros comandos sql basta atribuir um novo comando
-à variavel "sql", reatribuir o sql ao ps e por ultimo mandar executar com execute();
+- apos a preparacao acima, para acrescentar outros comandos sql basta atribuir um novo comando
+ï¿½ variavel "sql", reatribuir o sql ao ps e por ultimo mandar executar com execute();
 
 - o comando executeUpdate() retorna um int e pode ser usado para delete, insert ou update.
 portanto, quando se quiser saber quantos registros foram acrescentados, por exemplo, basta usar este comando;
 
-- instanciando PreparedStatement é possível setar informações em locais representados por interrogação (?).
+- instanciando PreparedStatement ï¿½ possivel setar informacoes em locais representados por interrogaï¿½ï¿½o (?).
 ex.: String teste = "INSERT INTO alunos(nome, idade) VALUES(?,?)"
 	 teste.setInt(1,22);
 	 testeString(2, "Luana");
 	
-- dá para guardar resultado de select em um array utilizando a instancia 
+- dï¿½ para guardar resultado de select em um array utilizando a instancia 
 ResultSet nomeArray = nomeVariavelPreparedStatment.executeQuery();
 
 - nomeArray.next() faz a leitura do indice 0 ao ultimo indice de um array;
-obs.: para pegar o valor de um indice basta usar nomeArray.getInt/getString(posição ou nome da coluna), 
+obs.: para pegar o valor de um indice basta usar nomeArray.getInt/getString(posiï¿½ï¿½o ou nome da coluna), 
 por exemplo
 
 
 - PADRAO DAO:
-duas classes são criadas: 1 classe para metodos e 1 para as interações com BD.
+duas classes sï¿½o criadas: 1 classe para metodos e 1 para as interaï¿½ï¿½es com BD.
 por ex.:  classe para metodos > Produtos
 		  classe DAO          > ProdutosDAO
 		  
-- "static" = classe que não pode ser instanciada;
+- "static" = classe que nï¿½o pode ser instanciada;
 
-- "super()" dentro do construtor deve ser usado quando houver relação de herança:
+- "super()" dentro do construtor deve ser usado quando houver relaï¿½ï¿½o de heranï¿½a:
 se quiser usar os atributos de classe-pai;
 
-- para usar objeto como parâmetro, basta:
+- para usar objeto como parï¿½metro, basta:
 	da main: 
 	i. instanciar a classe para onde quer enviar o objeto;
-	ii. chamar a função passando o parâmetro (this);
+	ii. chamar a funï¿½ï¿½o passando o parï¿½metro (this);
 	da outra classe:
-	i. ter uma função correspondente à que foi chamada;
-	ii. a função ter o parâmetro (Classe apelidoClasse) > ex.: cadastrar(Produto p);
+	i. ter uma funï¿½ï¿½o correspondente ï¿½ que foi chamada;
+	ii. a funï¿½ï¿½o ter o parï¿½metro (Classe apelidoClasse) > ex.: cadastrar(Produto p);
 	iii. para pegar os atributos, basta utilizar getNomeAtributo();
 	
-- método para verificar se a conexão do sql está funcionando:
+- mï¿½todo para verificar se a conexï¿½o do sql estï¿½ funcionando:
 	DriverManager.getConnection(url, user, password);
-	se algo der errado o método retorna null;
+	se algo der errado o mï¿½todo retorna null;
 	
-- instâncias devem ser feitas dentro da função public void main (quando for o caso de estar nesta classe);
+- instï¿½ncias devem ser feitas dentro da funï¿½ï¿½o public void main (quando for o caso de estar nesta classe);
 
 - sempre usar try-catch;
 
-- nunca deve haver interação com o usuário ou mensagem de console na classe DAO;
+- nunca deve haver interaï¿½ï¿½o com o usuï¿½rio ou mensagem de console na classe DAO;
 
-- abrir e fechar as conexões dentro das funções onde serão utilizadas;
+- abrir e fechar as conexï¿½es dentro das funï¿½ï¿½es onde serï¿½o utilizadas;
 	num switch-case, por exe., dentro dos cases;
 	
 ----- MVC 
 
-- classe DAO é usada em 2 camadas, porém, quando se usam 3 camadas, a classe DAO será transformada 
-em MODEL > terá a mesma função: usada para persistência de dados (BD)
+- classe DAO ï¿½ usada em 2 camadas, porï¿½m, quando se usam 3 camadas, a classe DAO serï¿½ transformada 
+em MODEL > terï¿½ a mesma funï¿½ï¿½o: usada para persistï¿½ncia de dados (BD)
 
 - CONTROL - usada para escrever toda a parte logica do programa;
 
-- VIEW: usada para fazer a interação com o usuario (pegar dados, printar, etc);
+- VIEW: usada para fazer a interaï¿½ï¿½o com o usuario (pegar dados, printar, etc);
 
 
 
