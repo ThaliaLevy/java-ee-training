@@ -91,7 +91,25 @@ em MODEL > ter� a mesma fun��o: usada para persist�ncia de dados (BD)
 - VIEW: usada para fazer a intera��o com o usuario (pegar dados, printar, etc);
 
 
+----- MVC PARA WEB
 
+- MODEL.ENTIDADE: como se fosse o "control" > guarda a logica;
+
+- MODEL.PERSISTENCIA: somente sql;
+
+- controle: regra de negocio;
+
+- quando se trabalha com a web nao se usa VOID MAIN (classe);
+
+- depois da construcao da estrutura do programa, quando tudo estiver funcionando, somente views precisarao
+ser criadas (quando for necessario ter novas pÃ¡ginas para o programa);
+
+
+
+-------- PROJETO DINAMICO PARA WEB
+
+- para criar projeto web (com HTML), seguir os passos da IDE:
+File > New > Other > Buscar por "web" > Dynamic Web Project;
 
 
 

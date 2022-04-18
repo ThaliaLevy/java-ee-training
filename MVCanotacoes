@@ -1,0 +1,9 @@
+----- MVC 
+
+- classe DAO é usada em 2 camadas, porém, quando se usam 3 camadas, a classe DAO será transformada 
+em MODEL > terá a mesma função: usada para persistência de dados (BD)
+
+- CONTROL - usada para escrever toda a parte logica do programa;
+
+- VIEW: usada para fazer a interação com o usuario (pegar dados, printar, etc);
+
